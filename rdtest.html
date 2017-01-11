@@ -1,0 +1,51 @@
+<html>
+
+<head>
+</head>
+
+<body>
+<script>
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+} 
+
+function setCookie() {
+    var d = new Date();
+    var t = d.valueOf();
+    d.setTime(d.getTime() + (1*24*60*60*1000));
+    document.cookie = "ts=" + t + ";expires="+ d.toUTCString() + ";path=/";
+} 
+</script>
+
+<a id="redirect">at body</a>
+<br/>
+<a id="redirect2">at head</a>
+<br/>
+<a id="redirect3">minified</a>
+<script>
+[].forEach.call(document.getElementsByTagName('a'), function(e){
+    e.setAttribute("href", e.id + ".html?url=" + encodeURIComponent(window.location.href));
+    e.addEventListener('click',setCookie);
+});
+
+var a = getCookie("ts");
+
+if(a!="") {
+    document.write("<p>" + (Date.now() - (+a)) + " milliseconds have passed</p>");
+}
+</script>
+<br/>
+<p>
+</body>
