@@ -5,8 +5,6 @@ addEventListener('fetch', event => {
         requestUrl.host === 'local.adguard.com' ||
         requestUrl.host === 'injections.adguard.com'
     ) {
-        event.respondWith(async function () {
-            return fetch(event.request, { cache: "no-cache" });
-        });
+        event.respondWith(fetch(event.request, { cache: "no-cache" }));
     }
 });
