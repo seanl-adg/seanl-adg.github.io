@@ -4,7 +4,7 @@
         <script>
             window.onload = () => {
                 if (typeof GM_getValue === 'undefined') {
-                    document.body.innerHTML = "<p>Install the <a href='./userscript.js'>userscript</a></p>"
+                    document.body.innerHTML = "<p>Install the <a href='./test.user.js'>userscript</a></p>"
                 }
 
                 document.body.innerHTML = GM_getValue('testKey');
