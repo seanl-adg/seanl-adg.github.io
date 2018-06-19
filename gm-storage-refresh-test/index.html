@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <script>
+            window.onload = () => {
+                document.body.innerHTML = GM_getValue('testKey');
+                GM_setValue('testKey', Math.random());
+            }
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(function(registration) {
+                        console.log('Service worker registration succeeded:', registration);
+                        navigator.serviceWorker.controller.onmessage = function (evt) {
+                            console.log('Service worker message: ', evt.data);
+                        };
+                    }).catch(function(error) {
+                        console.log('Service worker registration failed:', error);
+                    });
+            } else {
+                console.log('Service worker not supported');
+            }
+        </script>
+    </head>
+    <body>
+                
+    </body>
+</html>
