@@ -10,5 +10,5 @@
 // @run-at document-start
 // ==/UserScript==
 
-unsafewindow.GM_getValue = GM_getValue;
+unsafeWindow.GM_getValue = GM_getValue;
 unsafeWindow.GM_setValue = GM_setValue;
