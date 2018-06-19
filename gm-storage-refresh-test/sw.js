@@ -1,5 +1,5 @@
 addEventListener('fetch', event => {
-    postMesssage(`fetch event for url: ${event.request.url}`);
+    console.log(`fetch event for url: ${event.request.url}`);
     let requestUrl = new URL(event.request.url);
     if (
         requestUrl.host === 'local.adguard.com' ||
